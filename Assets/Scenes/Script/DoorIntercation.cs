@@ -20,7 +20,6 @@ public class DoorInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            Debug.Log("Player in range");
         }
     }
 
