@@ -24,9 +24,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "29e05828-b5c8-4b10-a7fe-17626152c50c",
+                    "id": "3db10e3d-90e2-49a7-8293-5c348ff0de39",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -102,12 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "4455c41f-4273-4991-a310-61184f0626f3",
-                    "path": "<Mouse>/rightButton",
+                    "id": "ed88a79a-ff7c-4fb0-8dd2-96aee94dda0b",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

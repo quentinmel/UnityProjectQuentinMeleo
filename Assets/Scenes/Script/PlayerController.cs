@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 50f;
     [SerializeField] float lookSpeed = 2f;
     [SerializeField] float smoothTime = 0.1f;
+    [SerializeField] float jumpForce = 7;
 
     public Animator anim;
     Rigidbody rb;
     Vector2 moveInput;
     Vector2 lookInput;
     Animator animator;
+    bool isGrounded;
 
     private void Start()
     {
@@ -40,6 +42,9 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("left", 0f);
             animator.SetFloat("right", 0f);
         }
+
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.8f);
+        animator.SetBool("jumping", !isGrounded);
     }
 
     private void FixedUpdate()
@@ -55,6 +60,14 @@ public class PlayerController : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context)
     {
         lookInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            Jump();
+        }
     }
 
     private void MovePlayer()
@@ -79,15 +92,10 @@ public class PlayerController : MonoBehaviour
 
         Vector3 lookDir = transform.position - cam.transform.position;
         cam.transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
-
-        if (moveInput.magnitude > 0.1f)
-        {
-            animator.SetTrigger("Walk");
-        }
     }
 
-    public void OnFire()
+    private void Jump()
     {
-        Debug.Log("fired");
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
