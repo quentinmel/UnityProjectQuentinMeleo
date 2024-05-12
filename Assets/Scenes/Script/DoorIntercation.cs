@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DoorInteraction : MonoBehaviour
 {
-    public string sceneToLoad;
+    [SerializeField] private string sceneToLoad;
     private bool playerInRange = false;
     private bool doorOpen = false;
 
