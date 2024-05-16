@@ -16,10 +16,17 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     bool isGrounded;
 
+    public int maxHealth = 3;
+    public int currentHealth;
+    public HealthBar healthBar;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(currentHealth);
     }
 
     private void Update()
@@ -45,6 +52,11 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.8f);
         animator.SetBool("jumping", !isGrounded);
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            TakeDamage(1);
+        }
     }
 
     private void FixedUpdate()
@@ -97,5 +109,12 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        healthBar.SetHealth(currentHealth);
     }
 }
