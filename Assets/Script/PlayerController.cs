@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float lookSpeed = 2f;
     [SerializeField] float smoothTime = 0.1f;
     [SerializeField] float jumpForce = 7;
+    [SerializeField] float talkRange = 3f;
 
     public Animator anim;
     Rigidbody rb;
@@ -109,6 +110,22 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    public void TalkToPNJ(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, talkRange);
+            foreach (Collider col in hitColliders)
+            {
+                if (col.CompareTag("PNJ"))
+                {
+                    Debug.Log("Parler aux PNJ");
+                    break;
+                }
+            }
+        }
     }
 
     void TakeDamage(int damage)
