@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float talkRange = 3f;
 
     public Animator anim;
+    private Vector3 respawnPosition = new Vector3(0, 5, 0);
     Rigidbody rb;
     Vector2 moveInput;
     Vector2 lookInput;
@@ -54,9 +55,9 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.8f);
         animator.SetBool("jumping", !isGrounded);
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (transform.position.y < -15f)
         {
-            TakeDamage(1);
+            Respawn();
         }
     }
 
@@ -133,5 +134,16 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+    }
+
+    void Respawn()
+    {
+        transform.position = respawnPosition;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            TakeDamage(1);
+        }
     }
 }

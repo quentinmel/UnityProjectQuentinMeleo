@@ -883,6 +883,7 @@ MonoBehaviour:
   lookSpeed: 2
   smoothTime: 0.1
   jumpForce: 7
+  talkRange: 3
   anim: {fileID: 7011842371913335483}
   maxHealth: 3
   currentHealth: 0
