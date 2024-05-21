@@ -2918,7 +2918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a600663767d07849876022b95b86366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level3
+  sceneToLoad: Level2Enigme
 --- !u!1001 &963658056
 PrefabInstance:
   m_ObjectHideFlags: 0
