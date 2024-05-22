@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -136,9 +137,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = maxHealth;
-            Respawn();
-            currentHealth = maxHealth;
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
