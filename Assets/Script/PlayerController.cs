@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.8f);
         animator.SetBool("jumping", !isGrounded);
 
-        if (transform.position.y < -15f)
+        if (transform.position.y < -5f)
         {
             Respawn();
         }
@@ -129,11 +129,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
         healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = maxHealth;
+            Respawn();
+        }
     }
 
     void Respawn()
