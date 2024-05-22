@@ -96,9 +96,9 @@ public class PlayerController : MonoBehaviour
             rb.MoveRotation(Quaternion.Lerp(rb.rotation, targetRotation, smoothTime));
         }
 
-        float cameraHeight = 2f;
-        float cameraDistance = 4f;
-        float cameraAngle = 5f;
+        float cameraHeight = 5f;
+        float cameraDistance = 5f;
+        float cameraAngle = 0f;
 
         Vector3 cameraOffset = Quaternion.Euler(cameraAngle, 0f, 0f) * Vector3.back * cameraDistance;
         Vector3 cameraPosition = transform.position + Vector3.up * cameraHeight + cameraOffset;
@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
             Respawn();
+            currentHealth = maxHealth;
         }
     }
 
