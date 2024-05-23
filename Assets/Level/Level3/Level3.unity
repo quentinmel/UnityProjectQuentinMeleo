@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJ
       objectReference: {fileID: 0}
+    - target: {fileID: 3241041427293752790, guid: 0ea996a8a28e96d449f60ceb4a494531, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8312056478315548270, guid: 0ea996a8a28e96d449f60ceb4a494531, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -417,12 +421,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6846281739534833422, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846281739534833422, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846281739534833422, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846281739534833422, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6894521232760159293, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2620195518166140163, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 139020663}
   m_SourcePrefab: {fileID: 100100000, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+--- !u!1 &139020662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2620195518166140163, guid: 70543ce576d9a6b47a4091228675f2f2, type: 3}
+  m_PrefabInstance: {fileID: 139020661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &139020663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139020662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f817dc1228a5074a898d7f9ff44dc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &152386037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,6 +742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DustMotesEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012882023006, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010002477438, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.13277201
@@ -755,8 +799,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 3.1415925
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011337858710, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
+      propertyPath: InitialModule.startRotationY.scalar
+      value: 1.5707963
       objectReference: {fileID: 0}
     - target: {fileID: 199000010453026294, guid: 5ca4c580b3888314581688fa46fb142d, type: 3}
       propertyPath: m_Materials.Array.size
