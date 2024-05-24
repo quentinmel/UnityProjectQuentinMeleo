@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameObject cam;
     [SerializeField] float moveSpeed = 50f;
-    [SerializeField] float lookSpeed = 2f;
     [SerializeField] float smoothTime = 0.1f;
     [SerializeField] float jumpForce = 7;
     [SerializeField] float talkRange = 3f;
