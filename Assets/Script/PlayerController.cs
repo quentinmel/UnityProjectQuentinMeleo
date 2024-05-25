@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float smoothTime = 0.1f;
     [SerializeField] float jumpForce = 7;
     [SerializeField] float talkRange = 3f;
+    [SerializeField] AudioClip damageSoundClip;
 
     public Animator anim;
     private Vector3 respawnPosition = new Vector3(0, 5, 0);
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Vector2 lookInput;
     Animator animator;
     bool isGrounded;
+    private AudioSource audioSource;
 
     public int maxHealth = 3;
     public int currentHealth;
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(currentHealth);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -133,6 +137,8 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        audioSource.clip = damageSoundClip;
+        audioSource.Play();
 
         if (currentHealth <= 0)
         {
