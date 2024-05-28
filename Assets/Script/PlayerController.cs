@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float talkRange = 3f;
     [SerializeField] AudioClip damageSoundClip;
     [SerializeField] CanvasGroup defeatUI;
+    [SerializeField] GameObject bloodEffectPrefab;
 
     public Animator anim;
     private Vector3 respawnPosition = new Vector3(0, 5, 0);
@@ -160,6 +161,8 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         audioSource.clip = damageSoundClip;
         audioSource.Play();
+
+        Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
 
         if (currentHealth <= 0)
         {

@@ -1913,6 +1913,7 @@ MonoBehaviour:
   talkRange: 3
   damageSoundClip: {fileID: 8300000, guid: 831424284232691428aedf2543ccf4ef, type: 3}
   defeatUI: {fileID: 1082902076183571838}
+  bloodEffectPrefab: {fileID: 4886073925396374554, guid: 9d5e72f8ccaf0df4e957985875d56475, type: 3}
   anim: {fileID: 7011842371913335483}
   maxHealth: 3
   currentHealth: 0
