@@ -7,7 +7,6 @@ public class ButtonBackToMenuScript : MonoBehaviour
 {
     public void OnBackToMenu()
     {
-        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
 }

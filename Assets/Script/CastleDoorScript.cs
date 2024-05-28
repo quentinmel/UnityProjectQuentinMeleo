@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CastleDoorScript : MonoBehaviour
 {
     private bool playerInRange = false;
     private ParticleInteraction particleInteraction;
     [SerializeField] CanvasGroup openDoorUI;
+    [SerializeField] TextMeshProUGUI totalScoreText;
 
     private void Start()
     {
@@ -49,7 +50,15 @@ public class CastleDoorScript : MonoBehaviour
             playerController.DisableMovement();
         }
 
+        var scoreController = FindObjectOfType<ScoreController>();
+        if (scoreController != null)
+        {
+            scoreController.StopCountingScore();
+        }
+
         StartCoroutine(FadeInOpenDoorUI());
+
+        totalScoreText.text = "Total Score: " + GameManager.PlayerScore.ToString();
     }
 
     private IEnumerator FadeInOpenDoorUI()
@@ -66,5 +75,7 @@ public class CastleDoorScript : MonoBehaviour
         }
 
         openDoorUI.alpha = 1;
+
+        yield return new WaitForSeconds(3f);
     }
 }

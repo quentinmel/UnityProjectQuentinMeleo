@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip damageSoundClip;
     [SerializeField] CanvasGroup defeatUI;
     [SerializeField] GameObject bloodEffectPrefab;
+    [SerializeField] TextMeshProUGUI totalScoreText;
 
     public Animator anim;
     private Vector3 respawnPosition = new Vector3(0, 5, 0);
@@ -41,8 +43,6 @@ public class PlayerController : MonoBehaviour
 
         defeatUI.alpha = 0;
         defeatUI.gameObject.SetActive(false);
-
-        Cursor.visible = false;
     }
 
     private void Update()
@@ -176,13 +176,18 @@ public class PlayerController : MonoBehaviour
         if (!deadAnimationPlayed)
         {
             Time.timeScale = 0.1f;
+            var scoreController = FindObjectOfType<ScoreController>();
+            if (scoreController != null)
+            {
+                scoreController.StopCountingScore();
+            }
+            totalScoreText.text = "Total Score: " + GameManager.PlayerScore.ToString();
             anim.SetBool("isDead", true);
             defeatUI.gameObject.SetActive(true);
             defeatUI.alpha = 1;
             yield return new WaitForSecondsRealtime(6);
             Time.timeScale = 1f;
             deadAnimationPlayed = true;
-            Cursor.visible = true;
         }
     }
 
@@ -202,3 +207,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
+public static class GameManager
+{
+    public static int PlayerScore { get; set; }
+}
+
