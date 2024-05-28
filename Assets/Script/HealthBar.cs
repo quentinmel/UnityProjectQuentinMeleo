@@ -9,6 +9,11 @@ public class HealthBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    public void Start()
+    {
+        slider.interactable = false;
+    }
+
     public void SetHealth(int health)
     {
         slider.value = health;

@@ -7,10 +7,13 @@ public class CastleDoorScript : MonoBehaviour
 {
     private bool playerInRange = false;
     private ParticleInteraction particleInteraction;
+    [SerializeField] CanvasGroup openDoorUI;
 
     private void Start()
     {
         particleInteraction = FindObjectOfType<ParticleInteraction>();
+        openDoorUI.alpha = 0;
+        openDoorUI.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -40,6 +43,28 @@ public class CastleDoorScript : MonoBehaviour
 
     private void OpenDoor()
     {
-        SceneManager.LoadScene("MainMenu");
+        var playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.DisableMovement();
+        }
+
+        StartCoroutine(FadeInOpenDoorUI());
+    }
+
+    private IEnumerator FadeInOpenDoorUI()
+    {
+        openDoorUI.gameObject.SetActive(true);
+        float duration = 2f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            openDoorUI.alpha = Mathf.Lerp(0, 1, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        openDoorUI.alpha = 1;
     }
 }

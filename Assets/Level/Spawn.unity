@@ -9794,6 +9794,14 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5928744022293974414, guid: 11fdad2163b0b8841a4d5aac482e08f6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5928744022293974414, guid: 11fdad2163b0b8841a4d5aac482e08f6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6508357449927679271, guid: 11fdad2163b0b8841a4d5aac482e08f6, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab

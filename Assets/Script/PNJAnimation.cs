@@ -9,6 +9,7 @@ public class PNJAnimation : MonoBehaviour
     public float wordsPerMinute = 500f;
     [TextArea(3, 10)]
     public string fullText;
+    private bool firstTime = true;
 
     private void Start()
     {
@@ -20,27 +21,18 @@ public class PNJAnimation : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (firstTime)
         {
-            animator.SetTrigger("playerClose");
-
-            if (dialogueText != null)
+            if (other.CompareTag("Player"))
             {
-                dialogueText.enabled = true;
-                StartCoroutine(ShowTextProgressively());
-            }
-        }
-    }
+                animator.SetTrigger("playerClose");
+                firstTime = false;
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            animator.ResetTrigger("playerClose");
-
-            if (dialogueText != null)
-            {
-                dialogueText.enabled = false;
+                if (dialogueText != null)
+                {
+                    dialogueText.enabled = true;
+                    StartCoroutine(ShowTextProgressively());
+                }
             }
         }
     }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 7;
     [SerializeField] float talkRange = 3f;
     [SerializeField] AudioClip damageSoundClip;
+    [SerializeField] CanvasGroup defeatUI;
 
     public Animator anim;
     private Vector3 respawnPosition = new Vector3(0, 5, 0);
@@ -18,6 +20,8 @@ public class PlayerController : MonoBehaviour
     Vector2 lookInput;
     Animator animator;
     bool isGrounded;
+    private bool disableMovement = false;
+    private bool deadAnimationPlayed = false;
     private AudioSource audioSource;
 
     public int maxHealth = 3;
@@ -33,10 +37,17 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxHealth(currentHealth);
 
         audioSource = GetComponent<AudioSource>();
+
+        defeatUI.alpha = 0;
+        defeatUI.gameObject.SetActive(false);
+
+        Cursor.visible = false;
     }
 
     private void Update()
     {
+        if (disableMovement) return;
+
         anim.SetFloat("vertical", Input.GetAxis("Vertical"));
         anim.SetFloat("horizontal", Input.GetAxis("Horizontal"));
 
@@ -67,21 +78,29 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (disableMovement) return;
+
         MovePlayer();
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (disableMovement) return;
+
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (disableMovement) return;
+
         lookInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (disableMovement) return;
+
         if (context.performed && isGrounded)
         {
             Jump();
@@ -119,6 +138,8 @@ public class PlayerController : MonoBehaviour
 
     public void TalkToPNJ(InputAction.CallbackContext context)
     {
+        if (disableMovement) return;
+
         if (context.performed)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, talkRange);
@@ -142,8 +163,29 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene("MainMenu");
+            disableMovement = true;
+            StartCoroutine(DelayedGameOver());
         }
+    }
+
+    private IEnumerator DelayedGameOver()
+    {
+        if (!deadAnimationPlayed)
+        {
+            Time.timeScale = 0.1f;
+            anim.SetBool("isDead", true);
+            defeatUI.gameObject.SetActive(true);
+            defeatUI.alpha = 1;
+            yield return new WaitForSecondsRealtime(6);
+            Time.timeScale = 1f;
+            deadAnimationPlayed = true;
+            Cursor.visible = true;
+        }
+    }
+
+    public void DisableMovement()
+    {
+        disableMovement = true;
     }
 
     void Respawn()
