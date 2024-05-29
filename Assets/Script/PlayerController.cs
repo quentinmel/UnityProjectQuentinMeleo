@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float talkRange = 3f;
     [SerializeField] AudioClip damageSoundClip;
     [SerializeField] CanvasGroup defeatUI;
+    [SerializeField] CanvasGroup victoryUI;
     [SerializeField] GameObject bloodEffectPrefab;
     [SerializeField] TextMeshProUGUI totalScoreText;
 
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
         defeatUI.alpha = 0;
         defeatUI.gameObject.SetActive(false);
+
+        victoryUI.alpha = 0;
+        victoryUI.gameObject.SetActive(false);
     }
 
     private void Update()
