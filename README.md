@@ -11,13 +11,13 @@ The goal is enter in the castle.
 
 ## Features
 
-The movement system is in ZQSD and you can jump with the space key.
-To display the pause menu, use the escape key.
-To interact with the elements, use the E key.
-There are animations for the AI, the player's movements, when you take damage and when you approach the NPC.
-The AI ​​follows a circle and if the player gets too close to the AI, then the AI ​​starts chasing the player.
-There is a puzzle where we have to put the keys corresponding to the locks.
-There are ice spears to avoid.
+- The movement system is in ZQSD and you can jump with the space key.
+- To display the pause menu, use the escape key.
+- To interact with the elements, use the E key.
+- There are animations for the AI, the player's movements, when you take damage and when you approach the NPC.
+- The AI ​​follows a circle and if the player gets too close to the AI, then the AI ​​starts chasing the player.
+- There is a puzzle where we have to put the keys corresponding to the locks.
+- There are ice spears to avoid.
 
 ## Installation
 
