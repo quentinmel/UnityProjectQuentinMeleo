@@ -53,8 +53,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
-        Debug.Log(GameManager.PlayerScore);
         if (disableMovement) return;
 
         anim.SetFloat("vertical", Input.GetAxis("Vertical"));

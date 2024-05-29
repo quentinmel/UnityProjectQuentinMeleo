@@ -25,7 +25,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("Resume");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         gameIsPaused= false;
