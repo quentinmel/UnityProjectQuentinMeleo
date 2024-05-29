@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameManager.IsGameOver)
         { 
             if (gameIsPaused)
             {
@@ -41,12 +41,14 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1.0f;
+        ScoreController.gameTime = 0f;
         SceneManager.LoadScene("MainMenu");
     }
 
     public void Restart()
     {
         Time.timeScale = 1.0f;
+        ScoreController.gameTime = 0f;
         SceneManager.LoadScene("Spawn");
     }
 

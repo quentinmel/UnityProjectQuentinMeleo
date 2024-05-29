@@ -47,10 +47,14 @@ public class PlayerController : MonoBehaviour
 
         victoryUI.alpha = 0;
         victoryUI.gameObject.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     private void Update()
     {
+
+        Debug.Log(GameManager.PlayerScore);
         if (disableMovement) return;
 
         anim.SetFloat("vertical", Input.GetAxis("Vertical"));
@@ -189,6 +193,10 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isDead", true);
             defeatUI.gameObject.SetActive(true);
             defeatUI.alpha = 1;
+
+            GameManager.IsGameOver = true;
+            ScoreController.gameTime = 0f;
+
             yield return new WaitForSecondsRealtime(6);
             Time.timeScale = 1f;
             deadAnimationPlayed = true;
@@ -215,5 +223,6 @@ public class PlayerController : MonoBehaviour
 public static class GameManager
 {
     public static int PlayerScore { get; set; }
+    public static bool IsGameOver { get; set; }
 }
 

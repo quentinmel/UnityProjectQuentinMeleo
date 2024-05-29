@@ -56,6 +56,9 @@ public class CastleDoorScript : MonoBehaviour
             scoreController.StopCountingScore();
         }
 
+        GameManager.IsGameOver = true;
+        ScoreController.gameTime = 0f;
+
         StartCoroutine(FadeInOpenDoorUI());
 
         totalScoreText.text = "Total Score: " + GameManager.PlayerScore.ToString();
