@@ -878,8 +878,8 @@ PrefabInstance:
     - target: {fileID: 1762395336492010858, guid: 0ea996a8a28e96d449f60ceb4a494531, type: 3}
       propertyPath: fullText
       value: "Pour interagir avec les \xE9l\xE9ments cliquer sur \"E\".\nPour pouvoir
-        afficher le menu pause lorsque vous \xEAtes dans un niveau cliquer sur \"Echape\".\nA
-        la fin de chaque niveau vous regagner votre jauge de vie."
+        afficher le menu pause cliquer sur \"Echape\".\nA la fin de chaque niveau
+        vous regagner votre jauge de vie."
       objectReference: {fileID: 0}
     - target: {fileID: 3241041427293752790, guid: 0ea996a8a28e96d449f60ceb4a494531, type: 3}
       propertyPath: m_Name
